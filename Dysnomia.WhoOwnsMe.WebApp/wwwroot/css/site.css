@@ -1,37 +1,397 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
+﻿/**
+ * Global design
+ */
+html, body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Titillium Web', sans-serif;
+	background: #f7f8fa;
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	position: relative;
+	box-sizing: border-box;
+	min-height: 100vh;
+	padding-bottom: 10em;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.center-title {
+	text-align: center;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+/* SCROLLBAR CUSTOM */
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+::-webkit-scrollbar-thumb {
+	background: #3e3e3e;
+	border: 0 none #000000;
+	border-radius: 50px;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+::-webkit-scrollbar-thumb:hover {
+	background: #000000;
+}
+
+::-webkit-scrollbar-track {
+	background: #999999;
+	border: 0 none #000000;
+	border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+	background: #999999;
+}
+
+::-webkit-scrollbar-track:active {
+	background: #DDDDDD;
+}
+
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/**
+ * Footer
+ */
+footer {
+	box-sizing: border-box;
+	/* Couleurs et police */
+	background-color: #1D1D1D;
+	color: white;
+	border-top: 1px solid #828282;
+	/* Positionnements */
+	font-size: 0.7em;
+	width: 100%;
+	padding: 1em;
+	vertical-align: bottom;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+footer table, footer table tr {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+footer a {
+	color: white;
+}
+/* Liens */
+.first-footer td {
+	min-width: 25%;
+	vertical-align: top;
+}
+
+.first-footer td ul {
+	list-style: none;
+	padding: 0;
+}
+
+.first-footer a {
+	text-decoration: none;
+}
+
+.first-footer a:hover {
+	text-decoration: underline;
+}
+/* Copyright */
+.second-footer {
+	text-align: center;
+}
+
+/**
+ * Menu
+ */
+.menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 100%;
+	height: 2.2em;
+	padding: 0 1em;
+	background: #ecf0f1;
+	font-family: 'Gugi', cursive;
+	z-index: 10;
+}
+
+.menu-title {
+	width: 200px;
+	display: inline-block;
+}
+
+.menu-title a {
+	color: #333333;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.menu-language {
+	position: absolute;
+	right: 0.3em;
+	top: 0.1rem;
+	height: 1.8rem;
+}
+
+.menu form {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 0.3em;
+}
+
+.menu input {
+	height: 1.8em;
+}
+
+.menu input[type=text] {
+	width: calc(100vw - 1em - 200px - 100px - 5em);
+}
+
+.menu input[type=submit] {
+	width: 100px;
+}
+
+#selected-language {
+	display: none;
+}
+
+/**
+ * Corps
+ */
+.corps {
+	margin-top: 2em;
+}
+
+.center-corps {
+	width: 100%;
+	max-width: 850px;
+	margin: 0 auto;
+	padding: 1em;
+	box-sizing: border-box;
+}
+
+@media (min-width: 750px) {
+	.corps-flex {
+		display: flex;
+	}
+}
+
+.corps-half {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 1em;
+}
+
+@media (min-width: 750px) {
+	.corps-half {
+		width: 50%;
+	}
+}
+
+@media (max-width: 749px) {
+	.corps-half {
+		width: 100%;
+	}
+}
+
+.corps-ad {
+	text-align: center;
+	margin: 1em 0;
+}
+
+#disclaimerMessage {
+	border: 1px solid #1D1D1D;
+	max-width: 750px;
+	margin: 0 auto;
+	display: none;
+}
+
+/**
+ * Search Bar
+ */
+.search-bar input {
+	box-sizing: border-box;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.search-bar input[type=text] {
+	padding-left: 1em;
+}
+
+.search-bar input[type=submit] {
+	background: #5599dd;
+	border: 0;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+	box-shadow: inset 0 -1px 0 1px rgba(0, 0, 0, 0.1), inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Drop file
+ **/
+#drop-overlay {
+	background: rgb(120,120,120);
+	background: rgba(0,0,0,0.4);
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	color: white;
+	font-size: 2em;
+	text-align: center;
+	line-height: 100vh;
+	vertical-align: middle;
+	display: none;
+}
+
+#drop-overlay img {
+	position: fixed;
+	left: calc(50% - 64px);
+	top: calc(50% - 2em - 64px);
+}
+
+/**
+ * Index
+ */
+.index-search {
+	background: url(../img/background.png);
+	background-size: cover;
+	width: 100%;
+	height: 81vh;
+}
+
+.index-search form {
+	position: absolute;
+	top: calc(40vh - 11rem);
+	left: 10vw;
+}
+
+.index-search input {
+	height: 3rem;
+	font-size: 1.2rem;
+}
+
+.index-search input[type=search] {
+	width: calc(80vw - 120px);
+}
+
+.index-search input[type=submit] {
+	width: 120px;
+}
+
+.index-error {
+	background: rgb(200,45,45,1);
+	color: #dddddd;
+	font-size: 1.2em;
+	text-align: center;
+	padding: 0.2em;
+}
+
+.index-text {
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	margin-bottom: 6rem;
+}
+
+@media (min-width: 500px) {
+	.index-text {
+		font-size: 3rem;
+	}
+}
+
+@media (max-width: 499px) {
+	.index-text {
+		font-size: 1.5rem;
+	}
+}
+
+/**
+ * View
+ */
+.view-title1, .view-title2 {
+	text-align: center;
+}
+
+.view-title1 {
+	margin-bottom: 0;
+}
+
+.view-title2 {
+	margin-top: 0;
+}
+
+.corps-view {
+	padding: 1em 0;
+}
+
+.corps-view a {
+	color: #5192d3;
+	text-decoration: none;
+}
+
+.corps-view a:hover {
+	text-decoration: underline;
+}
+
+.corps-view table, .corps-view tr, .corps-view td, .corps-view th {
+	box-sizing: border-box;
+}
+
+.corps-view table {
+	max-width: 100%;
+	min-width: 800px;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+.corps-view td {
+	text-align: center;
+	padding: 0.3em 0;
+}
+
+.corps-view tr:nth-child(even), .corps-view th {
+	background-color: #e2e2e2;
+	border-width: 0.2em 0.5em;
+	border-style: solid;
+	border-color: #e2e2e2;
+}
+
+.corps-view th {
+	padding: 0.2em 0.5em;
+}
+
+.corps-view img {
+	box-sizing: border-box;
+	width: 2em;
+	margin: 0 auto;
+	padding: 0.2em;
+}
+
+/**
+ * Search
+ */
+.search-corps {
+	padding: 0 1em;
+}
+
+.ranks-corps a, .search-corps a {
+	color: #5192d3;
+	text-decoration: none;
+}
+
+.ranks-corps a:hover, .search-corps a:hover {
+	text-decoration: underline;
 }

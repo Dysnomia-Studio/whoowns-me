@@ -1,0 +1,36 @@
+kind: pipeline
+name: galactae-server
+
+steps:
+- name: sonarqube
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host: ***REMOVED***
+    sonar_token: ***REMOVED***
+    level: TRACE
+    showProfiling: true
+  when:
+    branch:
+    - master
+
+- name: discord
+  pull: default
+  image: appleboy/drone-discord
+  settings:
+    webhook_id: ***REMOVED***
+    webhook_token: ***REMOVED***
+    message: >
+      {{#success build.status}}
+        Build **{{repo.name}}** on branch **{{build.branch}}** ({{truncate build.commit 8}}) succeeded.
+      {{else}}
+        Build **{{repo.name}}** on branch **{{build.branch}}** ({{truncate build.commit 8}}) failed.
+      {{/success}}
+  when:
+    branch:
+    - master
+    event:
+    - push
+    status: 
+    - changed
+    - failure
+    - success
