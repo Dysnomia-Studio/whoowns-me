@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="$lang->getLanguage()">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -40,21 +40,21 @@
 	<div class="container body-content">
 		@RenderBody()
 		<footer>
-			<table>
+			<table aria-describedby="First footer">
 				<tr class="first-footer">
 					<td>
 						<ul>
-							<li><h3>WhoOwns.Me</h3></li>
-							<li><a href="https://whoowns.me">Accueil</a></li>
+							<li><h3>HowToOpen.Me</h3></li>
+							<li><a href="https://howtoopen.me">Accueil</a></li>
 						</ul>
 					</td>
 
 					<td>
 						<ul>
 							<li><h3>Autres sites</h3></li>
-							<li><a href="***REMOVED***" target="_blank">Dehash.me</a></li>
-							<li><a href="https://howtoopen.me" target="_blank">HowToOpen.me</a></li>
-							<li><a href="***REMOVED***" target="_blank">Galactae: Space Age Dawn</a></li>
+							<li><a href="***REMOVED***" rel="noopener noreferrer" target="_blank">Dehash.me</a></li>
+							<li><a href="https://howtoopen.me" rel="noopener noreferrer" target="_blank">HowToOpen.me</a></li>
+							<li><a href="***REMOVED***" rel="noopener noreferrer" target="_blank">Galactae: Space Age Dawn</a></li>
 						</ul>
 					</td>
 
@@ -72,12 +72,10 @@
 					</td>
 				</tr>
 			</table>
-			<table>
+			<table aria-describedby="Second footer">
 				<tr class="second-footer">
-					<td>
-						WhoOwns.me - Crée par <a href="https://dysnomia.studio/" target="_blank">Dysnomia</a><br />
-						Copyright 2019-@(DateTime.Now.Year) - Tout droits reservés
-					</td>
+					<td>HowToOpenMe - Crée par <a href="https://dysnomia.studio/" rel="noopener noreferrer" target="_blank">Dysnomia</a><br/>
+					Copyright 2018-<?= date('Y') ?> - Tout droits reservés</td>
 				</tr>
 			</table>
 		</footer>
