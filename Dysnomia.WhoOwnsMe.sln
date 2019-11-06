@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.WebApp", "Dysnomia.WhoOwnsMe.WebApp\Dysnomia.WhoOwnsMe.WebApp.csproj", "{E9973250-FBAA-4FBB-AB9F-2776B5545FA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.WhoOwnsMe.WebApp", "Dysnomia.WhoOwnsMe.WebApp\Dysnomia.WhoOwnsMe.WebApp.csproj", "{E9973250-FBAA-4FBB-AB9F-2776B5545FA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.Common", "Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj", "{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.Business", "Dysnomia.WhoOwnsMe.Business\Dysnomia.WhoOwnsMe.Business.csproj", "{6E9A988B-FC3F-4145-AD55-066E05BAB41E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.DataAccess", "Dysnomia.WhoOwnsMe.DataAccess\Dysnomia.WhoOwnsMe.DataAccess.csproj", "{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{E9973250-FBAA-4FBB-AB9F-2776B5545FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9973250-FBAA-4FBB-AB9F-2776B5545FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9973250-FBAA-4FBB-AB9F-2776B5545FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E9A988B-FC3F-4145-AD55-066E05BAB41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9A988B-FC3F-4145-AD55-066E05BAB41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9A988B-FC3F-4145-AD55-066E05BAB41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9A988B-FC3F-4145-AD55-066E05BAB41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
