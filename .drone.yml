@@ -1,17 +1,24 @@
 kind: pipeline
-name: galactae-server
+name: whoowns-me-dotnet
 
 steps:
-- name: sonarqube
-  image: aosapps/drone-sonar-plugin
+- name: docker
+  image: plugins/docker
+  volumes:
+  - name: docker_sock
+    path: /var/run/docker.sock
   settings:
-    sonar_host: ***REMOVED***
-    sonar_token: ***REMOVED***
-    level: TRACE
-    showProfiling: true
+    repo: dysnomia/whoowns-me
+    dockerfile: Dockerfile
+    tags: ${DRONE_BRANCH}
+    dry_run: true
+    pull-image: false
+  environment:
+    PLUGIN_PULL_IMAGE: false
+
   when:
-    branch:
-    - master
+    event:
+    - push
 
 - name: discord
   pull: default
@@ -21,16 +28,19 @@ steps:
     webhook_token: ***REMOVED***
     message: >
       {{#success build.status}}
-        Build **{{repo.name}}** on branch **{{build.branch}}** ({{truncate build.commit 8}}) succeeded.
+        Build **{{repo.name}}** on branch **${DRONE_BRANCH}** succeeded.
       {{else}}
-        Build **{{repo.name}}** on branch **{{build.branch}}** ({{truncate build.commit 8}}) failed.
+        Build **{{repo.name}}** on branch **${DRONE_BRANCH}** failed.
       {{/success}}
   when:
-    branch:
-    - master
     event:
     - push
     status: 
     - changed
     - failure
     - success
+
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
