@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.WhoOwnsMe.WebApp", "Dysnomia.WhoOwnsMe.WebApp\Dysnomia.WhoOwnsMe.WebApp.csproj", "{E9973250-FBAA-4FBB-AB9F-2776B5545FA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.Common", "Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj", "{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.WhoOwnsMe.Common", "Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj", "{2CD818DF-E5EF-46A2-BDD0-1ABCC103A612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.Business", "Dysnomia.WhoOwnsMe.Business\Dysnomia.WhoOwnsMe.Business.csproj", "{6E9A988B-FC3F-4145-AD55-066E05BAB41E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.WhoOwnsMe.Business", "Dysnomia.WhoOwnsMe.Business\Dysnomia.WhoOwnsMe.Business.csproj", "{6E9A988B-FC3F-4145-AD55-066E05BAB41E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.DataAccess", "Dysnomia.WhoOwnsMe.DataAccess\Dysnomia.WhoOwnsMe.DataAccess.csproj", "{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dysnomia.WhoOwnsMe.DataAccess", "Dysnomia.WhoOwnsMe.DataAccess\Dysnomia.WhoOwnsMe.DataAccess.csproj", "{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dysnomia.WhoOwnsMe.WebApp.Tests", "Dysnomia.WhoOwnsMe.WebApp.Tests\Dysnomia.WhoOwnsMe.WebApp.Tests.csproj", "{BAF793F5-1AD8-4984-A267-83ABCB94F7D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDBA3FCF-C3C7-4C4C-9063-0633F2BDD461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF793F5-1AD8-4984-A267-83ABCB94F7D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF793F5-1AD8-4984-A267-83ABCB94F7D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF793F5-1AD8-4984-A267-83ABCB94F7D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF793F5-1AD8-4984-A267-83ABCB94F7D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
