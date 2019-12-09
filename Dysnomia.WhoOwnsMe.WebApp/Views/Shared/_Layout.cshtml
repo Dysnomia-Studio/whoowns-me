@@ -1,86 +1,86 @@
 ﻿<!DOCTYPE html>
 <html lang="$lang->getLanguage()">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>WhoOwns.me - @ViewData["Title"]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhoOwns.me - @ViewData["Title"]</title>
 
-	<link href="https://fonts.googleapis.com/css?family=Gugi|Titillium+Web" rel="stylesheet">
-	<link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Gugi|Titillium+Web" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-	<nav class="menu">
-		<span class="menu-title"><a href="/">WhoOwns.me</a></span>
+    <nav class="menu">
+        <span class="menu-title"><a href="/">WhoOwns.me</a></span>
 
-		@if (ViewContext.RouteData.Values["controller"].ToString() != "Home") {
-			<form class="search-bar" method="get" action="/search">
-				<input type="search" name="s" placeholder="Entrez un nom de produit, de marque ou d'entreprise">
-				<input type="submit" value="Rechercher">
-			</form>
-		}
+        @if (ViewContext.RouteData.Values["controller"].ToString() != "Home") {
+            <form class="search-bar" method="get" action="/search">
+                <input type="search" name="s" placeholder="Entrez un nom de produit, de marque ou d'entreprise">
+                <input type="submit" value="Rechercher">
+            </form>
+        }
 
-		<form method="post" class="menu-language" id="language-form">
-			<div id="language-list"></div>
-			<input type="text" id="selected-language" name="selected-language">
-		</form>
-		<script type="text/javascript" src="/js/iconselect/control/iconselect.js"></script>
-		<script type="text/javascript" src="/js/iconselect/iscroll.js"></script>
-		<script type="text/javascript" src="/js/language-list.js"></script>
-		@*<?php
-			if($lang->getLanguage() == 'en') { ?>
-			<script type="text/javascript">
-				window.addEventListener('load', function () {
-					changed--;
-					iconSelect.setSelectedIndex(1);
-				});
-			</script>
-			<?php } ?>*@
-	</nav>
+        <form method="post" class="menu-language" id="language-form">
+            <div id="language-list"></div>
+            <input type="text" id="selected-language" name="selected-language">
+        </form>
+        <script type="text/javascript" src="/js/iconselect/control/iconselect.js"></script>
+        <script type="text/javascript" src="/js/iconselect/iscroll.js"></script>
+        <script type="text/javascript" src="/js/language-list.js"></script>
+        @*<?php
+            if($lang->getLanguage() == 'en') { ?>
+            <script type="text/javascript">
+                window.addEventListener('load', function () {
+                    changed--;
+                    iconSelect.setSelectedIndex(1);
+                });
+            </script>
+            <?php } ?>*@
+    </nav>
 
-	<div class="container body-content">
-		@RenderBody()
-		<footer>
-			<table aria-describedby="First footer">
-				<tr class="first-footer">
-					<td>
-						<ul>
-							<li><h3>HowToOpen.Me</h3></li>
-							<li><a href="https://howtoopen.me">Accueil</a></li>
-						</ul>
-					</td>
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <table aria-describedby="First footer">
+                <tr class="first-footer">
+                    <td>
+                        <ul>
+                            <li><h3>HowToOpen.Me</h3></li>
+                            <li><a href="https://howtoopen.me">Accueil</a></li>
+                        </ul>
+                    </td>
 
-					<td>
-						<ul>
-							<li><h3>Autres sites</h3></li>
-							<li><a href="***REMOVED***" rel="noopener noreferrer" target="_blank">Dehash.me</a></li>
-							<li><a href="https://howtoopen.me" rel="noopener noreferrer" target="_blank">HowToOpen.me</a></li>
-							<li><a href="***REMOVED***" rel="noopener noreferrer" target="_blank">Galactae: Space Age Dawn</a></li>
-						</ul>
-					</td>
+                    <td>
+                        <ul>
+                            <li><h3>Autres sites</h3></li>
+                            <li><a href="***REMOVED***" rel="noopener noreferrer" target="_blank">Dehash.me</a></li>
+                            <li><a href="https://howtoopen.me" rel="noopener noreferrer" target="_blank">HowToOpen.me</a></li>
+                            <li><a href="***REMOVED***" rel="noopener noreferrer" target="_blank">Galactae: Space Age Dawn</a></li>
+                        </ul>
+                    </td>
 
-					<td>
-						<ul>
-							<li><h3>Reseaux sociaux</h3></li>
-							<li><a href="https://discord.gg/c8aARey">Discord</a></li>
-						</ul>
-					</td>
+                    <td>
+                        <ul>
+                            <li><h3>Reseaux sociaux</h3></li>
+                            <li><a href="https://discord.gg/c8aARey">Discord</a></li>
+                        </ul>
+                    </td>
 
-					<td>
-						<ul>
-							<li><h3>Divers</h3></li>
-						</ul>
-					</td>
-				</tr>
-			</table>
-			<table aria-describedby="Second footer">
-				<tr class="second-footer">
-					<td>HowToOpenMe - Crée par <a href="https://dysnomia.studio/" rel="noopener noreferrer" target="_blank">Dysnomia</a><br/>
-					Copyright 2018-<?= date('Y') ?> - Tout droits reservés</td>
-				</tr>
-			</table>
-		</footer>
-	</div>
-
-	@RenderSection("Scripts", required: false)
+                    <td>
+                        <ul>
+                            <li><h3>Divers</h3></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <table aria-describedby="Second footer">
+                <tr class="second-footer">
+                    <td>
+                        HowToOpenMe - Crée par <a href="https://dysnomia.studio/" rel="noopener noreferrer" target="_blank">Dysnomia</a><br />
+                        Copyright 2018-@DateTime.Now.Year - Tout droits reservés
+                    </td>
+                </tr>
+            </table>
+        </footer>
+    </div>
 </body>
 </html>
