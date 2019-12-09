@@ -1,8 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dysnomia.Common.SQL" Version="1.0.4" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj" />
