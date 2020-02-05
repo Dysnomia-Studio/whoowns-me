@@ -1,16 +1,28 @@
 ﻿@{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index";
 }
 
 <section class="corps">
-	<div class="index-search">
-		<form class="search-bar" method="get" action="search">
-			<p class="index-text">Trouvez les liens de propriétés entre vos marques préférées !</p>
-			<input type="search" name="s" placeholder="Entrez un nom de produit, de marque ou d'entreprise" value="@ViewData["search"]">
-			<input type="submit" value="Rechercher">
-			@if (ViewData["error"] != null) {
-				<p class="index-error">@ViewData["error"]</p>
-			}
-		</form>
-	</div>
+    <div class="index-search">
+        <form class="search-bar" method="get" action="search">
+            <p class="index-text">Trouvez les liens de propriétés entre vos marques préférées !</p>
+            <input type="search" name="s" placeholder="Entrez un nom de produit, de marque ou d'entreprise" value="@ViewData["search"]">
+            <input type="submit" value="Rechercher">
+            @if (ViewData["error"] != null) {
+                <p class="index-error">@ViewData["error"]</p>
+            }
+        </form>
+    </div>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Whoowns.me - Responsive -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="***REMOVED***"
+         data-ad-slot="***REMOVED***"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 </section>
