@@ -1,3 +1,4 @@
+using Dysnomia.Common.Stats;
 using Dysnomia.WhoOwnsMe.Common;
 
 using Microsoft.AspNetCore.Builder;
@@ -31,13 +32,19 @@ namespace Dysnomia.WhoOwnsMe.WebApp {
 			} else {
 				app.UseExceptionHandler("/Home/Error");
 			}
+
+			app.UseHttpsRedirection();
 			app.UseStaticFiles();
-
 			app.UseRouting();
-
-			app.UseAuthorization();
-
 			app.UseSession();
+
+			if (!env.IsEnvironment("Testing")) {
+				app.Use(async (context, next) => {
+					StatsRecorder.NewVisit(context);
+
+					await next();
+				});
+			}
 
 			app.UseEndpoints(endpoints => {
 				endpoints.MapControllerRoute(

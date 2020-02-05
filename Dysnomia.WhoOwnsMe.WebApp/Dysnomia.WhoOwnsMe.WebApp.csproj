@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dysnomia.Common.Stats" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Dysnomia.WhoOwnsMe.Business\Dysnomia.WhoOwnsMe.Business.csproj" />
     <ProjectReference Include="..\Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj" />
     <ProjectReference Include="..\Dysnomia.WhoOwnsMe.DataAccess\Dysnomia.WhoOwnsMe.DataAccess.csproj" />
