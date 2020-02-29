@@ -41,6 +41,8 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Tests {
 			var response = await client.GetAsync("/search/test");
 
 			response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+			// @TODO: check redirected to index
 		}
 
 		[Fact]
@@ -61,7 +63,9 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Tests {
 		public async void ShouldGet200_GET_Info_Not_Exists() {
 			var response = await client.GetAsync("/info/test");
 
-			response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+			response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+			// @TODO: check redirected to index
 		}
 
 		[Fact]
