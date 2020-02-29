@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dysnomia.Common.SQL" Version="1.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj" />
+    <ProjectReference Include="..\Dysnomia.WhoOwnsMe.DataAccess\Dysnomia.WhoOwnsMe.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

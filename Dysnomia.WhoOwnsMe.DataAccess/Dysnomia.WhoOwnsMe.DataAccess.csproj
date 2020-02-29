@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dysnomia.WhoOwnsMe.Business\Dysnomia.WhoOwnsMe.Business.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.3" />
+    <PackageReference Include="Npgsql" Version="4.1.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Dysnomia.WhoOwnsMe.Common\Dysnomia.WhoOwnsMe.Common.csproj" />
   </ItemGroup>
 

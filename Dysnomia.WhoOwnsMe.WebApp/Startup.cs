@@ -1,5 +1,9 @@
 using Dysnomia.Common.Stats;
+using Dysnomia.WhoOwnsMe.Business.Implementations;
+using Dysnomia.WhoOwnsMe.Business.Interfaces;
 using Dysnomia.WhoOwnsMe.Common;
+using Dysnomia.WhoOwnsMe.DataAccess.Implementations;
+using Dysnomia.WhoOwnsMe.DataAccess.Interfaces;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +23,12 @@ namespace Dysnomia.WhoOwnsMe.WebApp {
 		public void ConfigureServices(IServiceCollection services) {
 			var appSettingsSection = Configuration.GetSection("AppSettings");
 			services.Configure<AppSettings>(appSettingsSection);
+
+			// Services
+			services.AddTransient<IPropertyService, PropertyService>();
+
+			// DataAccess
+			services.AddTransient<IPropertyDataAccess, PropertyDataAccess>();
 
 			services.AddControllersWithViews();
 			services.AddDistributedMemoryCache();
