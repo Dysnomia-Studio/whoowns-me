@@ -272,7 +272,7 @@ footer a {
 	height: 81vh;
 }
 
-.index-search form {
+.index-search .search-bar {
 	position: absolute;
 	top: calc(40vh - 11rem);
 	left: 10vw;

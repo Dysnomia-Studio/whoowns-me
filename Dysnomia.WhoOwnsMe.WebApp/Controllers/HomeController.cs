@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
+using Dysnomia.Common.Security;
 using Dysnomia.WhoOwnsMe.Business.Interfaces;
 
 using Microsoft.AspNetCore.Mvc;
@@ -13,20 +16,42 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 
 		[HttpGet("/")]
 		public IActionResult Index() {
+			BotHelper.SetSessionsVars(HttpContext);
+
 			return View();
 		}
 
-		[HttpGet("/search/{s}")]
-		public async Task<IActionResult> Search(string s) {
-			return View(await propertyService.Search(s));
+		[HttpGet("/search/{searchText}")]
+		public async Task<IActionResult> Search(string searchText) {
+			IEnumerable<string> result = null;
+			ViewData["SearchText"] = searchText;
+			if (!BotHelper.IsBot(HttpContext) && !string.IsNullOrWhiteSpace(searchText)) {
+				result = await propertyService.Search(searchText);
+			}
+
+			BotHelper.SetSessionsVars(HttpContext);
+
+			if (result == null) {
+				return View("Index");
+			}
+
+			if (!result.Any()) {
+				ViewData["error"] = "Erreur: Aucun resultat";
+				return View("Index");
+			}
+
+			ViewData["Results"] = result;
+
+			return View();
 		}
 
 		[HttpGet("/info/{name}")]
 		public async Task<IActionResult> Info(string name) {
-			var obj = await propertyService.GetPropertyByName(name);
+			ViewData["Result"] = await propertyService.GetPropertyByName(name);
 
-			if (obj == null) {
-				return NotFound();
+			if (ViewData["Result"] == null) {
+				ViewData["error"] = "Erreur: Page inexistante";
+				return View("Index");
 			}
 
 			return View();

@@ -27,7 +27,6 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 			try {
 				return await propertyDataAccess.GetPropertyByName(name);
 			} catch (Exception e) {
-				var test = "";
 				// @TODO: log it
 			}
 

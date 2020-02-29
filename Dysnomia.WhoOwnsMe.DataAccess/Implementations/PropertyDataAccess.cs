@@ -23,9 +23,9 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Implementations {
 			using var connection = new NpgsqlConnection(connectionString);
 
 			var reader = await connection.ExecuteQuery(
-				"SELECT name FROM things WHERE name ILIKE %@name%",
+				"SELECT name FROM things WHERE name ILIKE @name",
 				new Dictionary<string, object>() {
-					{ "name", name }
+					{ "name", "%" + name + "%" }
 				}
 			);
 

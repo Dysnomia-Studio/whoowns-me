@@ -1,6 +1,19 @@
 ﻿
-@{ ViewData["Title"] = "Search";
+@{
+    ViewData["Title"] = "Search";
+    var results = (IEnumerable<string>)ViewData["Results"];
 }
 
-<h2>Search</h2>
+<section class="corps center-corps">
+    <h2>Résultats pour la recherche "@ViewData["SearchText"]":</h2>
+</section>
 
+<partial name="_Ad" />
+
+<section class="corps center-corps search-corps">
+    <ul>
+        @foreach (var result in results) {
+            <li><a href="/info/@result">@result</a></li>
+        }
+    </ul>
+</section>

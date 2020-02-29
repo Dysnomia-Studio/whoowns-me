@@ -1,6 +1,17 @@
 ﻿
-@{ ViewData["Title"] = "Search";
+@using Dysnomia.WhoOwnsMe.Common.Models;
+@{
+    ViewData["Title"] = "Search";
+    var result = (Property)ViewData["Result"];
 }
 
-<h2>Search</h2>
+<section class="corps center-corps corps-view">
+    <h1 class="view-title1">@result.Name</h1>
+    <p class="view-title2">@result.LongName</p>
+    <p>@result.Description</p>
+</section>
 
+<partial name="_Ad" />
+
+<section class="corps corps-view">
+</section>
