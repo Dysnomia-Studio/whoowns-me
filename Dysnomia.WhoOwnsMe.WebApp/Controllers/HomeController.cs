@@ -20,7 +20,7 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 
 			ViewData["TopItems"] = await propertyService.GetTopProperties();
 
-			return View();
+			return View("Index");
 		}
 
 		[HttpGet("/search/{searchText}")]
@@ -34,12 +34,12 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 			BotHelper.SetSessionsVars(HttpContext);
 
 			if (result == null) {
-				return View("Index");
+				return await Index();
 			}
 
 			if (!result.Any()) {
 				ViewData["error"] = "Erreur: Aucun resultat";
-				return View("Index");
+				return await Index();
 			}
 
 			ViewData["Results"] = result;
@@ -54,7 +54,7 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 
 			if (ViewData["Result"] == null) {
 				ViewData["error"] = "Erreur: Page inexistante";
-				return View("Index");
+				return await Index();
 			}
 
 			await propertyService.AddViewToItem(result.Name);
