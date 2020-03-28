@@ -7,5 +7,7 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Interfaces {
 	public interface IPropertyDataAccess {
 		Task<IEnumerable<string>> Search(string name);
 		Task<Property> GetPropertyByName(string name);
+		Task AddViewToItem(string name);
+		Task<IEnumerable<string>> GetTopProperties();
 	}
 }

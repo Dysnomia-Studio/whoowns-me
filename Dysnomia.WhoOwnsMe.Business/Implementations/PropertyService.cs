@@ -32,5 +32,23 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 
 			return null;
 		}
+
+		public async Task AddViewToItem(string name) {
+			try {
+				await propertyDataAccess.AddViewToItem(name);
+			} catch (Exception e) {
+				// @TODO: log it
+			}
+		}
+
+		public async Task<IEnumerable<string>> GetTopProperties() {
+			try {
+				return await propertyDataAccess.GetTopProperties();
+			} catch (Exception e) {
+				// @TODO: log it
+			}
+
+			return new List<string>();
+		}
 	}
 }

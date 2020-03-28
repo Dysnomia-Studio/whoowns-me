@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    var topItems = (IEnumerable<string>)ViewData["TopItems"];
 }
 
 <section class="corps">
@@ -15,6 +16,17 @@
     </div>
 
     <partial name="_Ad" />
+
+    <div class="corps center-corps corps-view">
+        <h2 class="center-title">Top</h2>
+        <ol>
+            @foreach (var item in topItems) {
+                <li><a href="info/@item">@item</a></li>
+            }
+        </ol>
+        <br />
+        <br />
+    </div>
 
     <script>
         window.onload = () => {

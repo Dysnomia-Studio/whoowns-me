@@ -92,5 +92,30 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Implementations {
 
 			return property;
 		}
+
+		public async Task AddViewToItem(string name) {
+			using var connection = new NpgsqlConnection(connectionString);
+
+			await connection.ExecuteNonQuery("INSERT INTO public.\"propertyViews\"(\"property\", \"date\", \"viewCount\") VALUES(@property, current_date, 1) ON CONFLICT(\"property\", \"date\") DO UPDATE SET \"viewCount\" = public.\"propertyViews\".\"viewCount\" + 1;",
+				new Dictionary<string, object>() {
+					{ "property", name }
+				}
+			);
+		}
+
+		public async Task<IEnumerable<string>> GetTopProperties() {
+			using var connection = new NpgsqlConnection(connectionString);
+
+			var reader = await connection.ExecuteQuery(
+				"SELECT SUM(\"viewCount\") as countSum, property FROM public.\"propertyViews\" WHERE date > current_date - interval '30 days' GROUP BY property ORDER BY countSum DESC LIMIT 10"
+			);
+
+			var retour = new List<string>();
+			while (reader.Read()) {
+				retour.Add(reader.GetString("property"));
+			}
+
+			return retour;
+		}
 	}
 }

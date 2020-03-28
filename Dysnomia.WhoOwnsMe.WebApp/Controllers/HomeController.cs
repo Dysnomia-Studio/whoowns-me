@@ -15,8 +15,10 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 		}
 
 		[HttpGet("/")]
-		public IActionResult Index() {
+		public async Task<IActionResult> Index() {
 			BotHelper.SetSessionsVars(HttpContext);
+
+			ViewData["TopItems"] = await propertyService.GetTopProperties();
 
 			return View();
 		}
@@ -47,12 +49,15 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 
 		[HttpGet("/info/{name}")]
 		public async Task<IActionResult> Info(string name) {
-			ViewData["Result"] = await propertyService.GetPropertyByName(name);
+			var result = await propertyService.GetPropertyByName(name);
+			ViewData["Result"] = result;
 
 			if (ViewData["Result"] == null) {
 				ViewData["error"] = "Erreur: Page inexistante";
 				return View("Index");
 			}
+
+			await propertyService.AddViewToItem(result.Name);
 
 			return View();
 		}
