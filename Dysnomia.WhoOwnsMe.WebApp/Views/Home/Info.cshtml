@@ -13,5 +13,35 @@
 
 <partial name="_Ad" />
 
-<section class="corps corps-view">
+<section class="corps center-corps corps-view">
+    <!-- TODO: Graph View -->
+
+    @if (result.Owners.Count() > 0) {
+        <h2>Propriétaires:</h2>
+        <ul>
+            @foreach (OtherThing owner in result.Owners) {
+                <li><a href="/info/@owner.Name">@owner.Name</a> (@owner.BeginDate.Year - @(owner.EndDate == null ? "?" : owner.EndDate.Value.Year.ToString()))</li>
+            }
+        </ul>
+    }
+
+    @if (result.Possessions.Count() > 0) {
+        <h2>Possessions:</h2>
+        <ul>
+            @foreach (OtherThing possession in result.Possessions) {
+                <li>
+                    <a href="/info/@possession.Name">@possession.Name</a>(@possession.BeginDate.Year - @(possession.EndDate == null ? "?" : possession.EndDate.Value.Year.ToString()))
+                </li>
+            }
+        </ul>
+    }
+</section>
+
+<section class="corps center-corps corps-view">
+    <h2>Sources:</h2>
+    <ul>
+        @foreach (string source in result.Sources) {
+            <li><a href="@source">@source</a></li>
+        }
+    </ul>
 </section>
