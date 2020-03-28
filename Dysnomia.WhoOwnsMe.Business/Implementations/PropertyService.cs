@@ -8,7 +8,7 @@ using Dysnomia.WhoOwnsMe.DataAccess.Interfaces;
 
 namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 	public class PropertyService : IPropertyService {
-		public IPropertyDataAccess propertyDataAccess;
+		private readonly IPropertyDataAccess propertyDataAccess;
 		public PropertyService(IPropertyDataAccess propertyDataAccess) {
 			this.propertyDataAccess = propertyDataAccess;
 		}

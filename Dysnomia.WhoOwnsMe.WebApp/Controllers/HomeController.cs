@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 	public class HomeController : Controller {
-		public IPropertyService propertyService;
+		private readonly IPropertyService propertyService;
 		public HomeController(IPropertyService propertyService) {
 			this.propertyService = propertyService;
 		}
