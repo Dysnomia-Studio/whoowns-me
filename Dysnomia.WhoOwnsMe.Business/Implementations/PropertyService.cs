@@ -41,14 +41,15 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 			}
 		}
 
-		public async Task<IEnumerable<string>> GetTopProperties() {
+		public async Task<IEnumerable<Property>> GetTopProperties() {
 			try {
 				return await propertyDataAccess.GetTopProperties();
 			} catch (Exception e) {
+				var text = "text";
 				// @TODO: log it
 			}
 
-			return new List<string>();
+			return new List<Property>();
 		}
 	}
 }

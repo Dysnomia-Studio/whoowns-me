@@ -79,6 +79,10 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Implementations {
 				}
 			);
 
+			if (!reader.Read()) {
+				return null;
+			}
+
 			var property = Property.MapFromReader(reader);
 
 			if (property == null) {
@@ -103,16 +107,16 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Implementations {
 			);
 		}
 
-		public async Task<IEnumerable<string>> GetTopProperties() {
+		public async Task<IEnumerable<Property>> GetTopProperties() {
 			using var connection = new NpgsqlConnection(connectionString);
 
 			var reader = await connection.ExecuteQuery(
-				"SELECT SUM(\"viewCount\") as countSum, property FROM public.\"propertyViews\" WHERE date > current_date - interval '30 days' GROUP BY property ORDER BY countSum DESC LIMIT 10"
+				"SELECT SUM(\"viewCount\") as countSum, property, name, \"longName\", \"type\", sources FROM public.\"propertyViews\" INNER JOIN things ON things.name = property WHERE date > current_date - interval '30 days' GROUP BY property, name, \"longName\", \"type\", sources ORDER BY countSum DESC LIMIT 10"
 			);
 
-			var retour = new List<string>();
+			var retour = new List<Property>();
 			while (reader.Read()) {
-				retour.Add(reader.GetString("property"));
+				retour.Add(Property.MapFromReader(reader));
 			}
 
 			return retour;

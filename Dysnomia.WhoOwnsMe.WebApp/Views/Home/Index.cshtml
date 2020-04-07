@@ -1,6 +1,7 @@
-﻿@{
+﻿@using Dysnomia.WhoOwnsMe.Common.Models;
+@{
     ViewData["Title"] = "Index";
-    var topItems = (IEnumerable<string>)ViewData["TopItems"];
+    var topItems = (IEnumerable<Property>)ViewData["TopItems"];
 }
 
 <section class="corps">
@@ -21,7 +22,7 @@
         <h2 class="center-title">Top</h2>
         <ol>
             @foreach (var item in topItems) {
-                <li><a href="info/@item">@item</a></li>
+                <li><a href="info/@item.Name">@item.Name - @item.LongName</a></li>
             }
         </ol>
         <br />

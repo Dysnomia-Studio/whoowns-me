@@ -14,10 +14,6 @@ namespace Dysnomia.WhoOwnsMe.Common.Models {
 		public IEnumerable<OtherThing> Possessions { get; set; }
 
 		public static Property MapFromReader(IDataReader reader) {
-			if (!reader.Read()) {
-				return null;
-			}
-
 			return new Property {
 				Name = reader.GetString("name"),
 				LongName = reader.GetString("longName"),
