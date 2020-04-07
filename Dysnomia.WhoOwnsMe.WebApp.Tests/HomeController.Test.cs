@@ -74,5 +74,12 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Tests {
 
 			response.StatusCode.Should().Be(HttpStatusCode.OK);
 		}
+
+		[Fact]
+		public async void ShouldGet404_GET_Not_Exists() {
+			var response = await client.GetAsync("/test");
+
+			response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+		}
 	}
 }
