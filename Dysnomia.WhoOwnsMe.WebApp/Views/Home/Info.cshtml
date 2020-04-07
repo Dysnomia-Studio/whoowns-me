@@ -37,11 +37,13 @@
     }
 </section>
 
-<section class="corps center-corps corps-view">
-    <h2>Sources:</h2>
-    <ul>
-        @foreach (string source in result.Sources) {
-            <li><a href="@source">@source</a></li>
-        }
-    </ul>
-</section>
+@if (result.Sources != null) {
+    <section class="corps center-corps corps-view">
+        <h2>Sources:</h2>
+        <ul>
+            @foreach (string source in result.Sources) {
+                <li><a href="@source">@source</a></li>
+            }
+        </ul>
+    </section>
+}
