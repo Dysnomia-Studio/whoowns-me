@@ -17,7 +17,8 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 			try {
 				return await propertyDataAccess.Search(name);
 			} catch (Exception e) {
-				// @TODO: log it
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
 			}
 
 			return null;
@@ -27,7 +28,8 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 			try {
 				return await propertyDataAccess.GetPropertyByName(name);
 			} catch (Exception e) {
-				// @TODO: log it
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
 			}
 
 			return null;
@@ -37,7 +39,8 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 			try {
 				await propertyDataAccess.AddViewToItem(name);
 			} catch (Exception e) {
-				// @TODO: log it
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
 			}
 		}
 
@@ -45,8 +48,8 @@ namespace Dysnomia.WhoOwnsMe.Business.Implementations {
 			try {
 				return await propertyDataAccess.GetTopProperties();
 			} catch (Exception e) {
-				var text = "text";
-				// @TODO: log it
+				Console.WriteLine(e.Message);
+				Console.WriteLine(e.StackTrace);
 			}
 
 			return new List<Property>();
