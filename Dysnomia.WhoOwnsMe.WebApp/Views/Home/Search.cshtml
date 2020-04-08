@@ -2,10 +2,13 @@
 @{
     ViewData["Title"] = "Search";
     var results = (IEnumerable<string>)ViewData["Results"];
+
+    var culture = Context.Features.Get<IRequestCultureFeature>
+        ().RequestCulture.Culture.TwoLetterISOLanguageName;
 }
 
 <section class="corps center-corps">
-    <h2>Résultats pour la recherche "@ViewData["SearchText"]":</h2>
+    <h2>@Localizer["RESULTS_FOR_SEARCH"] "@ViewData["SearchText"]":</h2>
 </section>
 
 <partial name="_Ad" />
@@ -13,7 +16,7 @@
 <section class="corps center-corps search-corps">
     <ul>
         @foreach (var result in results) {
-            <li><a href="/info/@result">@result</a></li>
+            <li><a href="/@culture/info/@result">@result</a></li>
         }
     </ul>
 </section>

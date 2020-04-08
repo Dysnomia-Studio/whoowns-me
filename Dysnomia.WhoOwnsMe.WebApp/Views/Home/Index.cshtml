@@ -2,14 +2,17 @@
 @{
     ViewData["Title"] = "Index";
     var topItems = (IEnumerable<Property>)ViewData["TopItems"];
+
+    var culture = Context.Features.Get<IRequestCultureFeature>
+        ().RequestCulture.Culture.TwoLetterISOLanguageName;
 }
 
 <section class="corps">
     <div class="index-search">
         <div class="search-bar">
-            <p class="index-text">Trouvez les liens de propriétés entre vos marques préférées !</p>
-            <input type="search" id="index-search-value" name="s" placeholder="Entrez un nom de produit, de marque ou d'entreprise" value="@ViewData["SearchText"]">
-            <input type="submit" id="index-search-button" value="Rechercher">
+            <p class="index-text">@Localizer["HOME_MSG"]</p>
+            <input type="search" id="index-search-value" name="s" placeholder="@Localizer["SEARCH_PLACEHOLDER"]" value="@ViewData["SearchText"]">
+            <input type="submit" id="index-search-button" value="@Localizer["SEARCH"]">
             @if (ViewData["error"] != null) {
                 <p class="index-error">@ViewData["error"]</p>
             }
@@ -19,7 +22,7 @@
     <partial name="_Ad" />
 
     <div class="corps center-corps corps-view">
-        <h2 class="center-title">Top</h2>
+        <h2 class="center-title">@Localizer["TOP"]</h2>
         <ol>
             @foreach (var item in topItems) {
                 <li><a href="info/@item.Name">@item.Name - @item.LongName</a></li>
@@ -38,7 +41,7 @@
                     return;
                 }
 
-                window.location.href = '/search/' + value
+                window.location.href = '/@culture/search/' + value
             };
 
             document.getElementById('index-search-button').addEventListener('click', sendForm);

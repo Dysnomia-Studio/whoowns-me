@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Search";
     var result = (Property)ViewData["Result"];
+
+    var culture = Context.Features.Get<IRequestCultureFeature>
+        ().RequestCulture.Culture.TwoLetterISOLanguageName;
 }
 
 <section class="corps center-corps corps-view">
@@ -17,20 +20,20 @@
     <!-- TODO: Graph View -->
 
     @if (result.Owners.Count() > 0) {
-        <h2>Propriétaires:</h2>
+        <h2>@Localizer["OWNERS"]</h2>
         <ul>
             @foreach (OtherThing owner in result.Owners) {
-                <li><a href="/info/@owner.Name">@owner.Name</a> (@owner.BeginDate.Year - @(owner.EndDate == null ? "?" : owner.EndDate.Value.Year.ToString()))</li>
+                <li><a href="/@culture/info/@owner.Name">@owner.Name</a> (@owner.BeginDate.Year - @(owner.EndDate == null ? "?" : owner.EndDate.Value.Year.ToString()))</li>
             }
         </ul>
     }
 
     @if (result.Possessions.Count() > 0) {
-        <h2>Possessions:</h2>
+        <h2>@Localizer["POSSESSIONS"]</h2>
         <ul>
             @foreach (OtherThing possession in result.Possessions) {
                 <li>
-                    <a href="/info/@possession.Name">@possession.Name</a>(@possession.BeginDate.Year - @(possession.EndDate == null ? "?" : possession.EndDate.Value.Year.ToString()))
+                    <a href="/@culture/info/@possession.Name">@possession.Name</a>(@possession.BeginDate.Year - @(possession.EndDate == null ? "?" : possession.EndDate.Value.Year.ToString()))
                 </li>
             }
         </ul>
@@ -39,7 +42,7 @@
 
 @if (result.Sources != null) {
     <section class="corps center-corps corps-view">
-        <h2>Sources:</h2>
+        <h2>@Localizer["SOURCES"]</h2>
         <ul>
             @foreach (string source in result.Sources) {
                 <li><a href="@source">@source</a></li>

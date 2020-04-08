@@ -1,5 +1,9 @@
+﻿@{
+    var culture = Context.Features.Get<IRequestCultureFeature>
+        ().RequestCulture.Culture.TwoLetterISOLanguageName;
+}
 <!DOCTYPE html>
-<html lang="$lang->getLanguage()">
+<html lang="@culture">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,12 +14,12 @@
 </head>
 <body>
     <nav class="menu">
-        <span class="menu-title"><a href="/">WhoOwns.me</a></span>
+        <span class="menu-title"><a href="/@culture/">WhoOwns.me</a></span>
 
         @if (ViewContext.RouteData.Values["action"].ToString() != "Index") {
             <form class="search-bar" method="get" action="/search">
-                <input type="search" name="s" placeholder="Entrez un nom de produit, de marque ou d'entreprise">
-                <input type="submit" value="Rechercher">
+                <input type="search" name="s" placeholder="@Localizer["SEARCH_PLACEHOLDER"]">
+                <input type="submit" value="@Localizer["SEARCH"]">
             </form>
         }
 
@@ -26,15 +30,14 @@
         <script type="text/javascript" src="/js/iconselect/control/iconselect.js"></script>
         <script type="text/javascript" src="/js/iconselect/iscroll.js"></script>
         <script type="text/javascript" src="/js/language-list.js"></script>
-        @*<?php
-            if($lang->getLanguage() == 'en') { ?>
+        @if (culture == "en") {
             <script type="text/javascript">
                 window.addEventListener('load', function () {
                     changed--;
                     iconSelect.setSelectedIndex(1);
                 });
             </script>
-            <?php } ?>*@
+        }
     </nav>
 
     <div class="container body-content">
@@ -75,7 +78,7 @@
             <table aria-describedby="Second footer">
                 <tr class="second-footer">
                     <td>
-                        HowToOpenMe - Crée par <a href="https://dysnomia.studio/" rel="noopener noreferrer" target="_blank">Dysnomia</a><br />
+                        WhoOwnsMe - Crée par <a href="https://dysnomia.studio/" rel="noopener noreferrer" target="_blank">Dysnomia</a><br />
                         Copyright 2018-@DateTime.Now.Year - Tout droits reservés
                     </td>
                 </tr>

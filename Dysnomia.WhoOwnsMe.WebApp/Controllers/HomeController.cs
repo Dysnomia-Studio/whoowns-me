@@ -14,7 +14,11 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 			this.propertyService = propertyService;
 		}
 
-		[HttpGet("/")]
+		[HttpGet]
+		[Route("/")]
+		[Route("/{culture}/")]
+		[Route("/index")]
+		[Route("/{culture}/index")]
 		public async Task<IActionResult> Index() {
 			BotHelper.SetSessionsVars(HttpContext);
 
@@ -23,7 +27,9 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 			return View("Index");
 		}
 
-		[HttpGet("/search/{searchText}")]
+		[HttpGet]
+		[Route("/search/{searchText}")]
+		[Route("/{culture}/search/{searchText}")]
 		public async Task<IActionResult> Search(string searchText) {
 			IEnumerable<string> result = null;
 			ViewData["SearchText"] = searchText;
@@ -47,7 +53,9 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Controllers {
 			return View();
 		}
 
-		[HttpGet("/info/{name}")]
+		[HttpGet]
+		[Route("/info/{name}")]
+		[Route("/{culture}/info/{name}")]
 		public async Task<IActionResult> Info(string name) {
 			var result = await propertyService.GetPropertyByName(name);
 			ViewData["Result"] = result;
