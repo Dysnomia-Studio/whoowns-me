@@ -76,10 +76,10 @@ namespace Dysnomia.WhoOwnsMe.WebApp.Tests {
 		}
 
 		[Fact]
-		public async void ShouldGet404_GET_Not_Exists() {
+		public async void ShouldGet200_GET_Not_Exists() {
 			var response = await client.GetAsync("/test");
 
-			response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+			response.StatusCode.Should().Be(HttpStatusCode.OK);
 		}
 	}
 }
