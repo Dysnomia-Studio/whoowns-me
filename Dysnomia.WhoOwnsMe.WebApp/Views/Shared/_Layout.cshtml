@@ -17,10 +17,31 @@
         <span class="menu-title"><a href="/@culture/">WhoOwns.me</a></span>
 
         @if (ViewContext.RouteData.Values["action"].ToString() != "Index") {
-            <form class="search-bar" method="get" action="/search">
+            <div class="search-bar">
                 <input type="search" name="s" placeholder="@Localizer["SEARCH_PLACEHOLDER"]">
                 <input type="submit" value="@Localizer["SEARCH"]">
-            </form>
+            </div>
+
+            <script>
+                window.onload = () => {
+                    const sendForm = () => {
+                        const value = document.getElementById('index-search-value').value;
+
+                        if (value.length < 2) {
+                            return;
+                        }
+
+                        window.location.href = '/@culture/search/' + value
+                    };
+
+                    document.getElementById('index-search-button').addEventListener('click', sendForm);
+                    document.getElementById('index-search-value').addEventListener('keyup', (e) => {
+                        if (e.key === "Enter") {
+                            sendForm();
+                        }
+                    });
+                };
+            </script>
         }
 
         <form method="post" class="menu-language" id="language-form">
