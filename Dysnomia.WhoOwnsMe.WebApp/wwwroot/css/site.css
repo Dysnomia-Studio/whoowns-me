@@ -220,9 +220,14 @@ footer a {
 /**
  * Search Bar
  */
+.search-bar {
+	width: calc(100% - 250px);
+}
+
 .search-bar input {
 	box-sizing: border-box;
 	font-family: 'Titillium Web', sans-serif;
+	width: calc(100% - 106px);
 }
 
 .search-bar input[type=text] {
