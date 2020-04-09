@@ -18,8 +18,8 @@
 
         @if (ViewContext.RouteData.Values["action"].ToString() != "Index") {
             <div class="search-bar">
-                <input type="search" name="s" placeholder="@Localizer["SEARCH_PLACEHOLDER"]">
-                <input type="submit" value="@Localizer["SEARCH"]">
+                <input type="search" id="index-search-value" name="s" placeholder="@Localizer["SEARCH_PLACEHOLDER"]">
+                <input type="submit" id="index-search-button" value="@Localizer["SEARCH"]">
             </div>
 
             <script>
