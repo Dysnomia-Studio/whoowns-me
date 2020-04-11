@@ -12,6 +12,7 @@ namespace Dysnomia.WhoOwnsMe.Common.Models {
 		public string[] Sources { get; set; }
 		public IEnumerable<OtherThing> Owners { get; set; }
 		public IEnumerable<OtherThing> Possessions { get; set; }
+		public IEnumerable<OtherThing> Siblings { get; set; }
 
 		public static Property MapFromReader(IDataReader reader) {
 			return new Property {

@@ -28,12 +28,23 @@
         </ul>
     }
 
+    @if (result.Siblings.Count() > 0) {
+        <h2>@Localizer["SIBLINGS"]</h2>
+        <ul>
+            @foreach (OtherThing sibling in result.Siblings) {
+                <li>
+                    <a href="/@culture/info/@sibling.Name">@sibling.Name</a> (@sibling.BeginDate.Year - @(sibling.EndDate == null ? "?" : sibling.EndDate.Value.Year.ToString()))
+                </li>
+            }
+        </ul>
+    }
+
     @if (result.Possessions.Count() > 0) {
         <h2>@Localizer["POSSESSIONS"]</h2>
         <ul>
             @foreach (OtherThing possession in result.Possessions) {
                 <li>
-                    <a href="/@culture/info/@possession.Name">@possession.Name</a>(@possession.BeginDate.Year - @(possession.EndDate == null ? "?" : possession.EndDate.Value.Year.ToString()))
+                    <a href="/@culture/info/@possession.Name">@possession.Name</a> (@possession.BeginDate.Year - @(possession.EndDate == null ? "?" : possession.EndDate.Value.Year.ToString()))
                 </li>
             }
         </ul>

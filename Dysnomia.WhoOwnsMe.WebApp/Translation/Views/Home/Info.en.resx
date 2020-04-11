@@ -123,6 +123,9 @@
   <data name="POSSESSIONS" xml:space="preserve">
     <value>Possessions:</value>
   </data>
+  <data name="SIBLINGS" xml:space="preserve">
+    <value>Siblings:</value>
+  </data>
   <data name="SOURCES" xml:space="preserve">
     <value>Sources:</value>
   </data>

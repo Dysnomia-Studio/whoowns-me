@@ -69,6 +69,26 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Implementations {
 			return OtherThing.MapListFromReader(reader);
 		}
 
+		private async Task<IEnumerable<OtherThing>> GetSiblings(Guid id) {
+			using var connection = new NpgsqlConnection(connectionString);
+
+			var reader = await connection.ExecuteQuery(
+				"SELECT owners.*, things.name " +
+				"FROM things " +
+				"INNER JOIN owners ON owners.child = things.id " +
+				"WHERE owners.parent IN ( " +
+				"SELECT owners.parent " +
+				"FROM owners " +
+				"WHERE owners.child = @id " +
+				") AND things.id <> @id",
+				new Dictionary<string, object>() {
+					{ "id", id }
+				}
+			);
+
+			return OtherThing.MapListFromReader(reader);
+		}
+
 		public async Task<Property> GetPropertyByName(string name) {
 			using var connection = new NpgsqlConnection(connectionString);
 
@@ -93,6 +113,7 @@ namespace Dysnomia.WhoOwnsMe.DataAccess.Implementations {
 
 			property.Owners = await GetOwners(id);
 			property.Possessions = await GetPossessions(id);
+			property.Siblings = await GetSiblings(id);
 
 			return property;
 		}
